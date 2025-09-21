@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Lookup</title>
+</head>
+<body>
+    <h1>Student Lookup</h1>
+    <form method="get">
+        Enter Roll Number: <input type="text" name="roll_no">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if student %}
+        <h2>Details</h2>
+        <p>Roll No: {{ student.roll_no }}</p>
+        <p>Name: {{ student.name }}</p>
+        <p>Maths: {{ student.maths }}</p>
+        <p>Physics: {{ student.physics }}</p>
+        <p>Chemistry: {{ student.chemistry }}</p>
+        <p>Total: {{ student.total }}</p>
+        <p>Percentage: {{ student.percentage }}</p>
+    {% elif student is None and request.GET.roll_no %}
+        <p style="color:red;">No student found!</p>
+    {% endif %}
+</body>
+</html>

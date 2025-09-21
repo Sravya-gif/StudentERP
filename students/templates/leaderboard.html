@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f7fa;
+            font-family: Arial, sans-serif;
+        }
+        .leaderboard {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .leaderboard h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .rank-1 {
+            background: gold;
+            color: black;
+        }
+        .rank-2 {
+            background: silver;
+            color: black;
+        }
+        .rank-3 {
+            background: #cd7f32; /* bronze */
+            color: white;
+        }
+        .list-group-item {
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard">
+        <h1>🏆 Top 3 Students 🏆</h1>
+        <ul class="list-group">
+            {% for s in top_students %}
+                <li class="list-group-item {% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% endif %}">
+                    {{ forloop.counter }}. {{ s.name }} (Roll: {{ s.roll_no }}) - {{ s.total }} marks, {{ s.percentage }}%
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Login</title>
+</head>
+<body>
+    <h1>Student Login</h1>
+    <form method="get">
+        Enter Roll Number: <input type="text" name="roll_no">
+        <button type="submit">Login</button>
+    </form>
+
+    {% if student %}
+        <h2>Welcome, {{ student.name }}</h2>
+        <p>Roll No: {{ student.roll_no }}</p>
+        <p>Maths: {{ student.maths }}</p>
+        <p>Physics: {{ student.physics }}</p>
+        <p>Chemistry: {{ student.chemistry }}</p>
+        <p>Total: {{ student.total }}</p>
+        <p>Percentage: {{ student.percentage }}</p>
+    {% elif student is None and request.GET.roll_no %}
+        <p style="color:red;">Invalid Roll Number</p>
+    {% endif %}
+</body>
+</html>
